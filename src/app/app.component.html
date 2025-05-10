@@ -5,9 +5,14 @@
   />
 </div>
 
+<div class="demo">
+  {{ startDate | date }}
+  {{ title | uppercase }}
+</div>
+
 <div class="courses">
   <!-- FOR  -->
-  <course-card
+  <!-- <course-card
     *ngFor="
       let course of courses;
       index as i;
@@ -23,9 +28,9 @@
     [class.is-last]="isLast"
     [class.is-even]="isEven"
     [class.is-odd]="isOdd"
-  />
+  /> -->
 
-  <!-- @for (course of courses; track trackCourse(index,course); let index = $index;
+  @for (course of courses; track trackCourse(index,course); let index = $index;
   let count = $count; let last = $last; let even = $even; let odd = $odd) {
   <course-card
     [course]="course"
@@ -38,5 +43,5 @@
   />
   }@empty{
   <h1>No courses found!</h1>
-  } -->
+  }
 </div>

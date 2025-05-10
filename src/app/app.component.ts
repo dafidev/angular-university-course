@@ -11,6 +11,9 @@ import { Course } from "./model/course";
 export class AppComponent {
   courses = [...COURSES];
 
+  title = "Angular Core Deep Dive";
+  startDate = new Date(2000, 0, 1);
+
   OnCourseSelected(courseSelected: Course) {
     console.log({ courseSelected });
   }
