@@ -6,7 +6,17 @@
 </div>
 
 <div class="courses" *ngIf="courses[0] as course">
-  <course-card (CourseSelected)="OnCourseSelected($event)" [course]="course">
+
+  <ng-template #blankImage let-courseName="description">
+    <p class="warn">{{ courseName }} has no image yet.</p>
+    <img src="../assets/empty-image.png" />
+  </ng-template>
+
+  <!-- <ng-container
+    *ngTemplateOutlet="blankImage; context: { description: course.description }">
+  </ng-container> -->
+
+  <course-card (CourseSelected)="OnCourseSelected($event)" [course]="course" [noImageTpl] =blankImage >
     <div class="course-description">
       {{ course.longDescription }}
     </div>

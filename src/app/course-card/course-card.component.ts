@@ -8,6 +8,7 @@ import {
   Input,
   output,
   Output,
+  TemplateRef,
 } from "@angular/core";
 import { CourseImageComponent } from "../course-image/course-image.component";
 import { Course } from "../model/course";
@@ -18,11 +19,20 @@ import {
   NgSwitch,
   NgSwitchCase,
   NgSwitchDefault,
+  NgTemplateOutlet,
 } from "@angular/common";
 
 @Component({
   selector: "course-card",
-  imports: [NgIf, NgClass, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault],
+  imports: [
+    NgIf,
+    NgClass,
+    NgStyle,
+    NgSwitch,
+    NgSwitchCase,
+    NgSwitchDefault,
+    NgTemplateOutlet,
+  ],
   templateUrl: "./course-card.component.html",
   styleUrl: "./course-card.component.css",
 })
@@ -33,6 +43,8 @@ export class CourseCardComponent implements AfterViewInit, AfterContentInit {
   @Input({ required: false })
   index: number;
 
+  @Input()
+  noImageTpl: TemplateRef<any>;
   // Signal
   //course = input.required<Course>();
 
