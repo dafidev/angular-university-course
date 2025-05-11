@@ -1,11 +1,15 @@
 import {
+  AfterContentInit,
+  AfterViewInit,
   Component,
+  ContentChildren,
   EventEmitter,
   input,
   Input,
   output,
   Output,
 } from "@angular/core";
+import { CourseImageComponent } from "../course-image/course-image.component";
 import { Course } from "../model/course";
 import {
   NgClass,
@@ -22,11 +26,11 @@ import {
   templateUrl: "./course-card.component.html",
   styleUrl: "./course-card.component.css",
 })
-export class CourseCardComponent {
+export class CourseCardComponent implements AfterViewInit, AfterContentInit {
   @Input({ required: true })
   course: Course;
 
-  @Input({ required: true })
+  @Input({ required: false })
   index: number;
 
   // Signal
@@ -37,6 +41,15 @@ export class CourseCardComponent {
 
   // Signal
   //courseEmitter = output<Course>()
+
+  @ContentChildren(CourseImageComponent)
+  images;
+
+  ngAfterViewInit(): void {}
+
+  ngAfterContentInit(): void {
+    console.log("contenet:", this.images);
+  }
 
   onCourseViewed() {
     console.log("card componnet - button clicked ...");

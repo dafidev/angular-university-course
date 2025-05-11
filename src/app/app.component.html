@@ -5,43 +5,11 @@
   />
 </div>
 
-<div class="demo">
-  {{ startDate | date }}
-  {{ title | uppercase }}
-</div>
-
-<div class="courses">
-  <!-- FOR  -->
-  <!-- <course-card
-    *ngFor="
-      let course of courses;
-      index as i;
-      first as isFirst;
-      last as isLast;
-      even as isEven;
-      odd as isOdd
-    "
-    [course]="course"
-    [index]="i + 1"
-    (courseEmitter)="OnCourseSelected($event)"
-    [class.is-first]="isFirst"
-    [class.is-last]="isLast"
-    [class.is-even]="isEven"
-    [class.is-odd]="isOdd"
-  /> -->
-
-  @for (course of courses; track trackCourse(index,course); let index = $index;
-  let count = $count; let last = $last; let even = $even; let odd = $odd) {
-  <course-card
-    [course]="course"
-    [index]="index + 1"
-    [class.is-first]="$first"
-    [class.is-last]="last"
-    [class.is-even]="even"
-    [class.is-odd]="odd"
-    (courseEmitter)="OnCourseSelected($event)"
-  />
-  }@empty{
-  <h1>No courses found!</h1>
-  }
+<div class="courses" *ngIf="courses[0] as course">
+  <course-card (CourseSelected)="OnCourseSelected($event)" [course]="course">
+    <div class="course-description">
+      {{ course.longDescription }}
+    </div>
+    <course-image [imageUrl]="course.iconUrl"></course-image>
+  </course-card>
 </div>
