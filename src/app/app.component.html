@@ -9,7 +9,7 @@
 
 <div class="courses" *ngIf="courses[0] as course">
 
-    <course-card
+    <course-card [highlighted] = "false"
             (courseSelected)="onCourseSelected($event)"
                  [course]="course">
 
@@ -20,7 +20,6 @@
         </div>
 
     </course-card>
-
 
 </div>
 
